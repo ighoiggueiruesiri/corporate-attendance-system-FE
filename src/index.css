@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-univasa: #cd3c32;
+  --color-univasa-dark: #a82f26;
+  --color-univasa-light: #fef2f2; /* Soft red for light backgrounds */
+
+  /* Pristine Light Mode Palette */
+  --color-ink: #0f172a; /* Deep slate for text */
+  --color-ink-soft: #64748b; /* Muted slate for labels */
+  --color-paper: #f8fafc; /* Very light cool-gray background */
+  --color-paper-raised: #ffffff; /* Pure white for cards */
+  --color-line: #e2e8f0; /* Crisp, subtle borders */
+
+  /* Signal colors — optimized for white backgrounds */
+  --color-ok: #059669;
+  --color-ok-soft: #d1fae5;
+  --color-brass: #d97706;
+  --color-brass-soft: #fef3c7;
+
+  --font-display: "Libre Franklin", "Helvetica Neue", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+body {
+  @apply bg-[var(--color-paper)] text-[var(--color-ink)] antialiased;
+  font-family: var(--font-body);
+  /* Elegant, subtle background texture */
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Replaced the dotted punch-strip with a sleek 2026 accent line */
+.brand-accent-strip {
+  height: 6px;
+  background: linear-gradient(90deg, var(--color-univasa), #ff7676);
+}
+
+@keyframes blink-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-blink-soft {
+  animation: blink-soft 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink-soft, .transition-transform, .transition-colors {
+    animation: none !important;
+    transition: none !important;
+  }
+}
